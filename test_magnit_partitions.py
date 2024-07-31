@@ -20,7 +20,7 @@ def browser():
     browser.quit()
 
 
-class TestMainPage():
+class TestMainPage:
 
     @pytest.mark.smoke
     def test_function(self, browser):
@@ -28,14 +28,14 @@ class TestMainPage():
         name_magnit_element = ['Скидки и акции', 'Наши бренды', 'Готовая еда', 'Молоко и яйца', 'Овощи и зелень', 'Фрукты и ягоды', 'Сладости', 'Мясо и птица', 'Рыба и морепродукты', 'Заморозка', 'Вода и напитки', 'Колбасы и сосиски', 'Хлеб и выпечка', 'Сыры', 'Макароны и крупы', 'Кофе и чай', 'Все для выпечки и десертов', 'Масло, соусы и специи', 'Консервы и соления', 'Орехи, снеки и чипсы', 'Для детей', 'Красота и гигиена', 'Стирка и уборка', 'Для животных', 'Дом, дача и авто']
         check_name = []
         wait = WebDriverWait(browser, 5)
-        self.elements = wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
+        wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
 
         for element in range(25):
-            self.element_by_magnit = wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
-            self.element_by_magnit[element].click()
+            element_by_magnit = wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
+            element_by_magnit[element].click()
 
-            self.name_product = wait.until(EC.visibility_of_element_located(NAME_PRODUCT)).text
-            check_name.append(self.name_product)
+            name_product = wait.until(EC.visibility_of_element_located(NAME_PRODUCT)).text
+            check_name.append(name_product)
             time.sleep(1)
             browser.back()
 

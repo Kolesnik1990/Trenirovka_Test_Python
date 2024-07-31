@@ -21,26 +21,26 @@ def browser():
     browser.quit()
 
 
-class TestMainPage():
+class TestMainPage:
 
     @pytest.mark.smoke
     def test_function(self, browser):
         wait = WebDriverWait(browser, 5)
         action = ActionChains(browser)
-        self.word_group = wait.until(EC.element_to_be_clickable(GROUP)).click()
+        wait.until(EC.element_to_be_clickable(GROUP)).click()
         all_categories = ['Транспорт', 'Недвижимость', 'Работа', 'Услуги', 'Личные вещи', 'Для дома и дачи', 'Запчасти и аксессуары', 'Электроника', 'Хобби и отдых', 'Животные', 'Бизнес и оборудование']
         search = []
 
-        self.elements = wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
+        elements = wait.until(EC.visibility_of_all_elements_located(ALL_PRODUCT))
 
-        for element in self.elements:
+        for element in elements:
             action.move_to_element(element).perform()
             time.sleep(1)
 
-            self.name_products = browser.find_element(*NAME_PRODUCT).get_attribute('data-name')
-            search.append(self.name_products)
+            name_products = browser.find_element(*NAME_PRODUCT).get_attribute('data-name')
+            search.append(name_products)
 
         assert all_categories == search, f"названия не совпадают, вот что получилось {search}"
-        print(search)
+        # print(search)
 
 
