@@ -1,4 +1,4 @@
- # -*- coding: utf8 -*-
+# -*- coding: utf8 -*-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -32,8 +32,8 @@ class TestAuthorizations:
     def test_input_date_1(self, browser):
         wait = WebDriverWait(browser, 4)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
-        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("kolie#$%-1990^mail.ru")
-        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys(19121985)
+        mail_1 = wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("kolie#$%-1990^mail.ru")
+        password_1 = wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys(19121985)
         wait.until(EC.visibility_of_element_located(ENTER)).click()
         assert wait.until(EC.visibility_of_element_located(PROFILE)).is_enabled(), f"данные не валидны"
 
@@ -41,8 +41,8 @@ class TestAuthorizations:
     def test_input_date_2(self, browser):
         wait = WebDriverWait(browser, 4)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
-        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("КОЛЕСНИК-1990@mail.ru")
-        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("")
+        mail_2 = wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("КОЛЕСНИК-1990@mail.ru")
+        password_2 = wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("")
         wait.until(EC.visibility_of_element_located(ENTER)).click()
         assert wait.until(EC.visibility_of_element_located(PROFILE)).is_enabled(), f"данные не валидны"
 
@@ -60,8 +60,8 @@ class TestAuthorizations:
     def test_input_date_4(self, browser):
         wait = WebDriverWait(browser, 4)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
-        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-199@mail.ru")
-        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("19121985")
+        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-1990@mail.ru")
+        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("Q19121985")
         wait.until(EC.visibility_of_element_located(ENTER)).click()
         assert wait.until(EC.visibility_of_element_located(PROFILE)).is_enabled(), f"данные не валидны"
 
@@ -75,8 +75,8 @@ class TestMainPage:
 
         wait = WebDriverWait(browser, 4)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
-        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-199@mail.ru")
-        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("19121985")
+        wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-1990@mail.ru")
+        wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("Q19121985")
         wait.until(EC.visibility_of_element_located(ENTER)).click()
         time.sleep(1)
         browser.execute_script("window.scrollBy(100, 2000)")
