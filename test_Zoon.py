@@ -20,17 +20,15 @@ ADDRESS = ("xpath", "//a[@href='mailto:corp@zoon.ru']")
 def browser():
     browser = webdriver.Chrome()
     browser.maximize_window()
-    link = "https://zoon.ru/"
-    browser.get(link)
+    browser.get("https://zoon.ru/")
     yield browser
     browser.quit()
-
 
 class TestAuthorizations:
 
     # Негативный тест с невалидными данными
     def test_input_date_1(self, browser):
-        wait = WebDriverWait(browser, 4)
+        wait = WebDriverWait(browser, 3)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
         mail_1 = wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("kolie#$%-1990^mail.ru")
         password_1 = wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys(19121985)
@@ -39,7 +37,7 @@ class TestAuthorizations:
 
     # Негативный тест с невалидными данными
     def test_input_date_2(self, browser):
-        wait = WebDriverWait(browser, 4)
+        wait = WebDriverWait(browser, 3)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
         mail_2 = wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("КОЛЕСНИК-1990@mail.ru")
         password_2 = wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("")
@@ -48,7 +46,7 @@ class TestAuthorizations:
 
     # Негативный тест с невалидными данными
     def test_input_date_3(self, browser):
-        wait = WebDriverWait(browser, 4)
+        wait = WebDriverWait(browser, 3)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
         wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("")
         wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("")
@@ -58,7 +56,7 @@ class TestAuthorizations:
     # Валидные данные (вводим валидные данные в поля вместо указанных моих и тогда код запустится)
     # Авторизация проходит успешно
     def test_input_date_4(self, browser):
-        wait = WebDriverWait(browser, 4)
+        wait = WebDriverWait(browser, 3)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
         wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-1990@mail.ru")
         wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("Q19121985")
@@ -73,7 +71,7 @@ class TestMainPage:
     @pytest.mark.smoke
     def test_function(self, browser):
 
-        wait = WebDriverWait(browser, 4)
+        wait = WebDriverWait(browser, 3)
         wait.until(EC.visibility_of_element_located(ENTRY)).click()
         wait.until(EC.visibility_of_element_located(EMAIL)).send_keys("koliesnik-1990@mail.ru")
         wait.until(EC.visibility_of_element_located(PASSWORD)).send_keys("Q19121985")
@@ -103,6 +101,5 @@ class TestMainPage:
     #                           ('$%79&|@mail.ru', '123*%$@')])
     #
     # def test_func(self, input_email, input_password):
-    #     wait = WebDriverWait(driver, 5)
-    #     input_email =
+    #     wait = WebDriverWait(driver, 5
 
