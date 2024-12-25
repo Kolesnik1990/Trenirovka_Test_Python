@@ -35,4 +35,3 @@ def test_search(browser):
     browser.execute_script("window.scrollTo(0, 200)")
     time.sleep(3)
     browser.find_element(*YANDEX).click()
-    assert
